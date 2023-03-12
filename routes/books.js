@@ -17,6 +17,7 @@ router.post("/", (req, res) => {
     title: joi.string().trim().required(),
     author: joi.string().trim().required(),
     genre: joi.string().trim().required(),
+    cover: joi.string().trim().uri().required(),
   });
   const { error } = schema.validate(body);
   if (error) {
@@ -26,6 +27,7 @@ router.post("/", (req, res) => {
       title: body.title,
       author: body.author,
       genre: body.genre,
+      cover: body.cover,
     };
     Book.insertMany(newBook)
       .then(() => res.status(201).send())
