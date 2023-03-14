@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
   });
   const { error } = schema.validate(body);
   if (error) {
-    res.status(200).send(error);
+    res.status(200).send(error.message);
   } else {
     const newBook = {
       title: body.title,
